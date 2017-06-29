@@ -2,7 +2,7 @@
 
 const express = require('express');
 const router = express.Router();
-const darksky = require('../credentials').darksky; //link from the credentials so we ge the key without name
+const darksky = process.env.DARKSKY || require('../credentials').darksky; //link from the credentials so we ge the key without name
 const baseUrl = `https://api.darksky.net/forecast/${darksky}/`;
 const axios = require('axios');
 
