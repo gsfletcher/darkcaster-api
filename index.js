@@ -1,18 +1,20 @@
 /*jshint esversion:6*/
 const express = require('express');
 const server = express();
-const port =process.env.PORT || 8080;
+const port = process.env.PORT || 8080;
 
 // middleware imports
 const logger = require('./middleware/logger');
 const notFound = require('./middleware/404');
 const errorHandler = require('./middleware/500');
+const cors = require('cors');
 // routers
 const weatherRouter = require('./routers/weather.router');
 
 // middleware use
 server.use(logger);
 server.use(weatherRouter);
+server.use(cors());
 
 // dummy route for testing
 server.get('/', (request, response) => {
